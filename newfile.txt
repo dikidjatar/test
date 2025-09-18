@@ -1,1 +1,2 @@
-This is nw file from github
+https://github.com/dikidjatar/test.gitcommand -v git || which git || echo "git not found"command -v node || which node || echo "node not found"
+node not found
