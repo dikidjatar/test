@@ -1,0 +1,78 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "mingw-ucrt64-debug",
+            "displayName": "MinGW UCRT64 (Debug)",
+            "description": "Build debug menggunakan MinGW UCRT64 (C:/msys64/ucrt64/bin/g++.exe)",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "mingw-ucrt64-release",
+            "displayName": "MinGW UCRT64 (Release)",
+            "description": "Build release menggunakan MinGW UCRT64 (C:/msys64/ucrt64/bin/g++.exe)",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "linux-gcc-debug",
+            "displayName": "Linux GCC (Debug)",
+            "description": "Build debug menggunakan GCC di Linux",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "linux-gcc-release",
+            "displayName": "Linux GCC (Release)",
+            "description": "Build release menggunakan GCC di Linux",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install/${presetName}",
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        }
+    ],
+    "buildPresets": [
+        {"name": "mingw-debug", "configurePreset": "mingw-ucrt64-debug"},
+        {"name": "mingw-release", "configurePreset": "mingw-ucrt64-release"},
+        {"name": "linux-debug", "configurePreset": "linux-gcc-debug"},
+        {"name": "linux-release", "configurePreset": "linux-gcc-release"}
+    ],
+    "testPresets": []
+}
